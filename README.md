@@ -2,4 +2,4 @@
 ![](light-theme.png)
 
 ## Dark theme
-![](light-theme.png)
+![](dark-theme.png)
