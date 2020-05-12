@@ -1,0 +1,24 @@
+{
+	"countries": [
+		{
+			"code": 375,
+			"name": "Belarus"
+		},
+		{
+			"code": 33,
+			"name": "France"
+		},
+		{
+			"code": 7,
+			"name": "Russia"
+		},
+		{
+			"code": 380,
+			"name": "Ukraine"
+		},
+		{
+			"code": 1,
+			"name": "USA"
+		}
+	] 
+}
