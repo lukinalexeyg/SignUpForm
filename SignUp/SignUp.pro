@@ -1,14 +1,22 @@
 QT += qml quick widgets
 
-CONFIG += c++
+CONFIG += c++11
 CONFIG += qtquickcompiler
-CONFIG += optimize_full
+
+CONFIG(release, debug|release) {
+    CONFIG += optimize_full
+}
 
 TEMPLATE = app
 
 TARGET = SignUp
 
 VERSION = 1.0.0
+
+win32-msvc* {
+    QMAKE_CFLAGS += /MP
+    QMAKE_CXXFLAGS += /MP
+}
 
 QMAKE_TARGET = $${TARGET}
 QMAKE_TARGET_PRODUCT = $${TARGET}
@@ -46,8 +54,9 @@ HEADERS += \
 
 RESOURCES += \
     resources.qrc
-    DESTDIR = bin
-    MOC_DIR = moc
-    OBJECTS_DIR = obj
-    RCC_DIR = rcc
-    UI_DIR = ui
+
+DESTDIR = bin
+MOC_DIR = moc
+OBJECTS_DIR = obj
+RCC_DIR = rcc
+UI_DIR = ui
