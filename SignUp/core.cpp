@@ -32,8 +32,8 @@ bool Core::readCountriesJson()
     QFile file(COUNTRIES_FILE_NAME);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-      WARNING_LOG "failutre to open file:" << COUNTRIES_FILE_NAME;
-      return false;
+        WARNING_LOG "failutre to open file:" << COUNTRIES_FILE_NAME;
+        return false;
     }
 
     const QByteArray data = file.readAll();
@@ -41,7 +41,7 @@ bool Core::readCountriesJson()
 
     const QJsonDocument jsonDocument = QJsonDocument::fromJson(data);
     const QJsonObject rootJsonObject = jsonDocument.object();
-    const QJsonValue jsonValue = rootJsonObject.value("countries");
+    const QJsonValue jsonValue = rootJsonObject.value(QStringLiteral("countries"));
 
     if (!jsonValue.isArray())
         return false;
@@ -52,7 +52,8 @@ bool Core::readCountriesJson()
 
     for (int i = 0; i < jsonArray.count(); ++i) {
         const QJsonObject countryJsonObject = jsonArray.at(i).toObject();
-        if (!countryJsonObject.contains("code") || !countryJsonObject.contains("name")) {
+        if (!countryJsonObject.contains(QStringLiteral("code"))
+                || !countryJsonObject.contains(QStringLiteral("name"))) {
             jsonArray.removeAt(i);
             --i;
         }
@@ -86,7 +87,7 @@ QVariantMap Core::jsToVariantMap(const QVariant &data)
     while (it.next()) {
         const QString name = it.name();
 
-        if (name != "length") {
+        if (name != QStringLiteral("length")) {
             const QJSValue jsValue2 = it.value();
             QJSValueIterator it2(jsValue2);
 

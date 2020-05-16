@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     QQmlContext *qmlContext = engine.rootContext();
 
-    qmlContext->setContextProperty("Core", &core);
+    qmlContext->setContextProperty(QStringLiteral("Core"), &core);
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/themes/Theme.qml")), "Theme", 1, 0, "Theme");
 
     engine.addImportPath(QStringLiteral("qrc:/qml"));
