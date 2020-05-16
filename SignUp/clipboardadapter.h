@@ -10,7 +10,7 @@ class ClipboardAdapter : public QObject
 
 public:
     explicit ClipboardAdapter(QObject *parent = nullptr);
-    Q_INVOKABLE void clear() { m_clipboard->clear(); }
+    Q_INVOKABLE inline void clear()             { m_clipboard->clear(); }
 
 signals:
     void textChanged();
@@ -19,8 +19,8 @@ private:
     QClipboard *m_clipboard;
 
 private:
-    inline QString text() { return m_clipboard->text(); }
-    inline void setText(const QString &text) { m_clipboard->setText(text, QClipboard::Clipboard); }
+    inline QString text()                       { return m_clipboard->text(); }
+    inline void setText(const QString &text)    { m_clipboard->setText(text, QClipboard::Clipboard); }
 };
 
 #endif // CLIPBOARDADAPTER_H
