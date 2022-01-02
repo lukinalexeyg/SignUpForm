@@ -10,7 +10,7 @@ Dialog {
     anchors.centerIn: parent
     visible: false
     contentWidth: Theme.em(26)
-    contentHeight: Theme.em(22)
+    contentHeight: Theme.em(24)
     Material.background: Theme.backgroundColor
 
     signal again
@@ -96,7 +96,7 @@ Dialog {
             anchors.bottom: parent.bottom
             anchors.rightMargin: Theme.em(1)
             anchors.bottomMargin: Theme.em(1)
-            width: Theme.em(14)
+            width: Theme.em(16)
             height: Theme.em(4.1)
             text: "Sign Up Again"
             outline: true
