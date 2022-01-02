@@ -9,7 +9,7 @@ CONFIG(release, debug|release) {
     CONFIG += optimize_full
 }
 
-TARGET = SignUp
+TARGET = SignUpForm
 
 TEMPLATE = app
 
