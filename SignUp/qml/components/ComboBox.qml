@@ -78,7 +78,9 @@ ComboBox {
 
         Connections {
             target: control
-            onDownChanged: canvas.requestPaint()
+            function onDownChanged() {
+                canvas.requestPaint()
+            }
         }
 
         onPaint: {

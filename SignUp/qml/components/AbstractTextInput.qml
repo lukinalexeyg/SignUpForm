@@ -23,9 +23,9 @@ Item {
 
     Connections {
         target: control.target
-        onCursorVisibleChanged: {
+        function onCursorVisibleChanged() {
             if (!control.target.cursorVisible)
-                control.target.deselect();
+                control.target.deselect()
         }
     }
 
@@ -297,7 +297,9 @@ Item {
 
         Connections {
             target: control.target
-            onCursorVisibleChanged: control.noteEnabled = false
+            function onCursorVisibleChanged() {
+                control.noteEnabled = false
+            }
         }
     }
 }

@@ -193,7 +193,9 @@ Item {
 
         Connections {
             target: mainWindow
-            onWidthChanged: gridLayout.columns = (width >= Theme.em(40)) ? 2 : 1
+            function onWidthChanged(width) {
+                gridLayout.columns = (width >= Theme.em(40)) ? 2 : 1
+            }
         }
     }
 
