@@ -1,10 +1,11 @@
-#include <QFile>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QJSValueIterator>
 #include "core.h"
 #include "log.h"
+
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJSValueIterator>
 
 
 
@@ -29,10 +30,10 @@ bool Core::init()
 
 bool Core::readCountriesJson()
 {
-    QFile file(COUNTRIES_FILE_NAME);
+    QFile file(s_countriesFileName);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        WARNING_LOG "failutre to open file:" << COUNTRIES_FILE_NAME;
+        WARNING_LOG "failure to open file:" << s_countriesFileName;
         return false;
     }
 
@@ -41,7 +42,7 @@ bool Core::readCountriesJson()
 
     const QJsonDocument jsonDocument = QJsonDocument::fromJson(data);
     const QJsonObject rootJsonObject = jsonDocument.object();
-    const QJsonValue jsonValue = rootJsonObject.value(QStringLiteral("countries"));
+    const QJsonValue jsonValue = rootJsonObject.value(QLatin1String("countries"));
 
     if (!jsonValue.isArray())
         return false;
@@ -52,8 +53,8 @@ bool Core::readCountriesJson()
 
     for (int i = 0; i < jsonArray.count(); ++i) {
         const QJsonObject countryJsonObject = jsonArray.at(i).toObject();
-        if (!countryJsonObject.contains(QStringLiteral("code"))
-                || !countryJsonObject.contains(QStringLiteral("name"))) {
+        if (!countryJsonObject.contains(QLatin1String("code"))
+                || !countryJsonObject.contains(QLatin1String("name"))) {
             jsonArray.removeAt(i);
             --i;
         }
@@ -66,7 +67,7 @@ bool Core::readCountriesJson()
 
 
 
-bool Core::signUp(const QVariant &data)
+bool Core::signUp(const QVariant &data) const
 {
     jsToVariantMap(data);
     /*
@@ -78,7 +79,7 @@ bool Core::signUp(const QVariant &data)
 
 
 
-QVariantMap Core::jsToVariantMap(const QVariant &data)
+QVariantMap Core::jsToVariantMap(const QVariant &data) const
 {
     QVariantMap map;
     const QJSValue jsValue = data.value<QJSValue>();
@@ -87,7 +88,7 @@ QVariantMap Core::jsToVariantMap(const QVariant &data)
     while (it.next()) {
         const QString name = it.name();
 
-        if (name != QStringLiteral("length")) {
+        if (name != QLatin1String("length")) {
             const QJSValue jsValue2 = it.value();
             QJSValueIterator it2(jsValue2);
 

@@ -1,15 +1,17 @@
-QT += qml quick widgets
+QT += qml \
+    quick \
+    widgets
 
-CONFIG += c++11
-CONFIG += qtquickcompiler
+CONFIG += c++17 \
+    qtquickcompiler
 
 CONFIG(release, debug|release) {
     CONFIG += optimize_full
 }
 
-TEMPLATE = app
-
 TARGET = SignUp
+
+TEMPLATE = app
 
 VERSION = 1.0.0
 
@@ -21,7 +23,7 @@ win32-msvc* {
 QMAKE_TARGET = $${TARGET}
 QMAKE_TARGET_PRODUCT = $${TARGET}
 QMAKE_TARGET_DESCRIPTION = "SignUp"
-QMAKE_TARGET_COPYRIGHT = "Copyright (c) 2020 Alexey Lukin"
+QMAKE_TARGET_COPYRIGHT = "Copyright (c) 2021 Alexey Lukin"
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -60,3 +62,9 @@ MOC_DIR = moc
 OBJECTS_DIR = obj
 RCC_DIR = rcc
 UI_DIR = ui
+
+copydata.commands = $(COPY_FILE) $$shell_path($$PWD\..\countries.json) $$shell_path($$DESTDIR)
+first.depends = $(first) copydata
+export(first.depends)
+export(copydata.commands)
+QMAKE_EXTRA_TARGETS += first copydata

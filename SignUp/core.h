@@ -1,12 +1,13 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include "clipboardadapter.h"
+
 #include <QObject>
 #include <QMap>
 #include <QVariant>
-#include "clipboardadapter.h"
 
-static const char* COUNTRIES_FILE_NAME = "countries.json";
+static const char* s_countriesFileName = "countries.json";
 
 class Core : public QObject
 {
@@ -16,8 +17,9 @@ class Core : public QObject
 
 public:
     explicit Core(QObject *parent = nullptr);
+
     bool init();
-    Q_INVOKABLE bool signUp(const QVariant &data);
+    Q_INVOKABLE bool signUp(const QVariant &data) const;
 
 private:
     ClipboardAdapter *m_clipboardAdapter;
@@ -25,7 +27,7 @@ private:
 
 private:
     bool readCountriesJson();
-    QVariantMap jsToVariantMap(const QVariant &data);
+    QVariantMap jsToVariantMap(const QVariant &data) const;
 };
 
 #endif // CORE_H

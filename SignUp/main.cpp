@@ -1,8 +1,8 @@
-#include <QApplication>
-#include <QQmlApplicationEngine>
-#include <QtQml>
-#include <QMessageBox>
 #include "core.h"
+
+#include <QApplication>
+#include <QMessageBox>
+#include <QtQml>
 
 
 
@@ -23,13 +23,13 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    if (!QFile::exists(COUNTRIES_FILE_NAME))
-        error(QString("File \"%1\" was not found").arg(COUNTRIES_FILE_NAME));
+    if (!QFile::exists(s_countriesFileName))
+        error(QString("File \"%1\" was not found").arg(s_countriesFileName));
 
     Core core;
 
     if (!core.init())
-        error(QString("File \"%1\" has no valid data").arg(COUNTRIES_FILE_NAME));
+        error(QString("File \"%1\" has no valid data").arg(s_countriesFileName));
 
     QQmlApplicationEngine engine;
     QQmlContext *qmlContext = engine.rootContext();
