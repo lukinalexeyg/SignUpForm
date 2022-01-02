@@ -22,7 +22,7 @@ Item {
     Flickable {
         anchors.centerIn: parent
         width: parent.width
-        height: Math.min(parent.height, mainRowLayout.implicitHeight)
+        height: Math.min(parent.height, contentHeight)
         contentHeight: mainRowLayout.implicitHeight
 
         ScrollBar.horizontal: ScrollBar {}

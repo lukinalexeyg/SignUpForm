@@ -5,7 +5,7 @@ import Theme 1.0
 
 ApplicationWindow {
     id: mainWindow
-    minimumWidth: 300
+    minimumWidth: 320
     minimumHeight: 300
     width: 400
     height: 520
