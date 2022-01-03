@@ -7,8 +7,6 @@
 #include <QMap>
 #include <QVariant>
 
-static const char* s_countriesFileName = "countries.json";
-
 class Core : public QObject
 {
     Q_OBJECT
@@ -18,7 +16,7 @@ class Core : public QObject
 public:
     explicit Core(QObject *parent = nullptr);
 
-    bool init();
+    QString init();
     Q_INVOKABLE bool signUp(const QVariant &data) const;
 
 private:

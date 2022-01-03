@@ -23,13 +23,11 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    if (!QFile::exists(s_countriesFileName))
-        error(QString("File \"%1\" was not found").arg(s_countriesFileName));
-
     Core core;
 
-    if (!core.init())
-        error(QString("File \"%1\" has no valid data").arg(s_countriesFileName));
+    const QString errorString = core.init();
+    if (!errorString.isEmpty())
+        error(errorString);
 
     QQmlApplicationEngine engine;
     QQmlContext *qmlContext = engine.rootContext();

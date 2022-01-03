@@ -7,6 +7,8 @@
 #include <QJsonObject>
 #include <QJSValueIterator>
 
+static const QLatin1String s_countriesFileName("countries.json");
+
 
 
 Core::Core(QObject *parent) :
@@ -16,14 +18,17 @@ Core::Core(QObject *parent) :
 
 
 
-bool Core::init()
+QString Core::init()
 {
-    if (readCountriesJson()) {
-        m_clipboardAdapter = new ClipboardAdapter(this);
-        return true;
-    }
+    if (!QFile::exists(s_countriesFileName))
+        return QString("File \"%1\" was not found").arg(s_countriesFileName);
 
-    return false;
+    if (!readCountriesJson())
+        return QString("File \"%1\" has no valid data").arg(s_countriesFileName);
+
+    m_clipboardAdapter = new ClipboardAdapter(this);
+
+    return QString();
 }
 
 
