@@ -1,0 +1,3 @@
+[submodule "submodules/LukQml"]
+	path = submodules/LukQml
+	url = https://github.com/lukinalexeyg/LukQML.git
