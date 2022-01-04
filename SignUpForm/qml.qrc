@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/SignUpDialog.qml</file>
+        <file>qml/SignUpForm.qml</file>
+    </qresource>
+</RCC>

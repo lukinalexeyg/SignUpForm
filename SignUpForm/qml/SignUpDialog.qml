@@ -1,44 +1,42 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Material 2.12
-import QtQuick.Layouts 1.12
-import "qrc:/qml/components" 1.0 as My
-import Theme 1.0
+import LukQml 1.0 as Luk
 
 Dialog {
     id: control
     anchors.centerIn: parent
     visible: false
-    contentWidth: Theme.em(26)
-    contentHeight: Theme.em(24)
-    Material.background: Theme.backgroundColor
+    contentWidth: Luk.Theme.em(26)
+    contentHeight: Luk.Theme.em(24)
+    Material.background: Luk.Theme.backgroundColor
 
     signal again
 
     header: Rectangle {
-        height: Theme.em(5)
-        color: Theme.backgroundColor
+        height: Luk.Theme.em(5)
+        color: Luk.Theme.backgroundColor
 
         Text {
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             text: "You have signed up successfully!"
-            font: Theme.largeFont
-            color: Theme.textColor
+            font: Luk.Theme.largeFont
+            color: Luk.Theme.textColor
         }
 
         Rectangle {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            height: Theme.em(0.1)
-            color: Theme.viewBackgroundColor
+            height: Luk.Theme.em(0.1)
+            color: Luk.Theme.viewBackgroundColor
         }
     }
 
     contentItem: Rectangle {
-        color: Theme.backgroundColor
+        color: Luk.Theme.backgroundColor
 
         Column {
             anchors.fill: parent
@@ -47,40 +45,40 @@ Dialog {
             Label {
                 width: parent.width
                 text: "First name: " + signUpForm.firstName
-                font: Theme.font
-                color: Theme.textColor
+                font: Luk.Theme.font
+                color: Luk.Theme.textColor
                 elide: Text.ElideRight
             }
 
             Label {
                 width: parent.width
                 text: "Last name: " + signUpForm.lastName
-                font: Theme.font
-                color: Theme.textColor
+                font: Luk.Theme.font
+                color: Luk.Theme.textColor
                 elide: Text.ElideRight
             }
 
             Label {
                 width: parent.width
                 text: "Country: " + signUpForm.country
-                font: Theme.font
-                color: Theme.textColor
+                font: Luk.Theme.font
+                color: Luk.Theme.textColor
                 elide: Text.ElideRight
             }
 
             Label {
                 width: parent.width
                 text: "Email: " + signUpForm.email
-                font: Theme.font
-                color: Theme.textColor
+                font: Luk.Theme.font
+                color: Luk.Theme.textColor
                 elide: Text.ElideRight
             }
 
             Label {
                 width: parent.width
                 text: "Password: " + signUpForm.password
-                font: Theme.font
-                color: Theme.textColor
+                font: Luk.Theme.font
+                color: Luk.Theme.textColor
                 elide: Text.ElideRight
             }
         }
@@ -88,16 +86,16 @@ Dialog {
 
     footer: Rectangle {
         height: button.height + 2*button.anchors.bottomMargin
-        color: Theme.backgroundColor
+        color: Luk.Theme.backgroundColor
 
-        My.Button {
+        Luk.Button {
             id: button
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            anchors.rightMargin: Theme.em(1)
-            anchors.bottomMargin: Theme.em(1)
-            width: Theme.em(16)
-            height: Theme.em(4.1)
+            anchors.rightMargin: Luk.Theme.em(1)
+            anchors.bottomMargin: Luk.Theme.em(1)
+            width: Luk.Theme.em(16)
+            height: Luk.Theme.em(4.1)
             text: "Sign Up Again"
             outline: true
             onClicked: {

@@ -1,14 +1,12 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
 import QtQuick.Layouts 1.12
-import "qrc:/qml/components" 1.0 as My
-import Theme 1.0
+import LukQml 1.0 as Luk
 
 Item {
     id: signUpForm
 
-    property int itemsHeight: Theme.em(4.1)
+    property int itemsHeight: Luk.Theme.em(4.1)
     property var emailRegExp: /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
     property alias firstName: firstNameTextField.text
     property alias lastName: lastNameTextField.text
@@ -34,13 +32,13 @@ Item {
 
             Item {
                 Layout.fillWidth: true
-                Layout.minimumWidth: Theme.em(2)
+                Layout.minimumWidth: Luk.Theme.em(2)
             }
 
             ColumnLayout {
-                Layout.minimumWidth: Theme.em(20)
-                Layout.maximumWidth: Theme.em(50)
-                spacing: Theme.em(2)
+                Layout.minimumWidth: Luk.Theme.em(20)
+                Layout.maximumWidth: Luk.Theme.em(50)
+                spacing: Luk.Theme.em(2)
 
                 Item {
                     Layout.fillHeight: true
@@ -48,40 +46,40 @@ Item {
 
                 Label {
                     Layout.fillWidth: true
-                    Layout.topMargin: -Theme.em(1.3)
+                    Layout.topMargin: -Luk.Theme.em(1.3)
                     text: "Sign Up"
                     font.pointSize: 22
                     font.family: "Liberation Sans"
                     font.bold: true
-                    color: Theme.textColor
+                    color: Luk.Theme.textColor
                 }
 
                 Label {
                     Layout.fillWidth: true
-                    Layout.topMargin: -Theme.em(0.9)
+                    Layout.topMargin: -Luk.Theme.em(0.9)
                     text: "Please fill in this form to create an account!"
                     font.family: "Liberation Sans"
-                    color: Theme.altTextColor
+                    color: Luk.Theme.altTextColor
                     wrapMode: Text.WordWrap
                 }
 
                 Rectangle {
                     Layout.fillWidth: true
-                    Layout.topMargin: -Theme.em(1.3)
-                    Layout.leftMargin: -Theme.em(4)
-                    Layout.rightMargin: -Theme.em(4)
-                    height: Theme.em(0.1)
-                    color: Theme.viewBackgroundColor
+                    Layout.topMargin: -Luk.Theme.em(1.3)
+                    Layout.leftMargin: -Luk.Theme.em(4)
+                    Layout.rightMargin: -Luk.Theme.em(4)
+                    height: Luk.Theme.em(0.1)
+                    color: Luk.Theme.viewBackgroundColor
                 }
 
                 GridLayout {
                     id: gridLayout
-                    Layout.topMargin: -Theme.em(0.6)
+                    Layout.topMargin: -Luk.Theme.em(0.6)
                     width: parent.width
-                    columnSpacing: Theme.em(2)
-                    rowSpacing: Theme.em(2)
+                    columnSpacing: Luk.Theme.em(2)
+                    rowSpacing: Luk.Theme.em(2)
 
-                    My.TextField {
+                    Luk.TextField {
                         id: firstNameTextField
                         Layout.fillWidth: true
                         Layout.maximumWidth: parent.width
@@ -90,7 +88,7 @@ Item {
                         mandatory: true
                     }
 
-                    My.TextField {
+                    Luk.TextField {
                         id: lastNameTextField
                         Layout.fillWidth: true
                         Layout.maximumWidth: parent.width
@@ -99,19 +97,19 @@ Item {
                     }
                 }
 
-                My.ComboBox {
+                Luk.ComboBox {
                     id: countryComboBox
                     Layout.fillWidth: true
                     Layout.preferredHeight: itemsHeight
                     leftPadding: 12
-                    font: Theme.font
+                    font: Luk.Theme.font
                     textRole: "name"
                     placeholder: "Select your country"
                     mandatory: true
                     model: Core.countries
                 }
 
-                My.TextField {
+                Luk.TextField {
                     id: emailTextField
                     Layout.fillWidth: true
                     Layout.preferredHeight: itemsHeight
@@ -121,7 +119,7 @@ Item {
                     mandatory: true
                 }
 
-                My.TextField {
+                Luk.TextField {
                     id: passwordTextField
                     Layout.fillWidth: true
                     Layout.preferredHeight: itemsHeight
@@ -131,10 +129,10 @@ Item {
                     mandatory: true
                 }
 
-                My.CheckBox {
+                Luk.CheckBox {
                     id: termsOfUseCheckbox
                     Layout.fillWidth: true
-                    Layout.topMargin: -Theme.em(1.2)
+                    Layout.topMargin: -Luk.Theme.em(1.2)
                     Layout.preferredHeight: itemsHeight
                     mandatory: true
                     text: "I accept the Terms of Use"
@@ -143,11 +141,11 @@ Item {
                 RowLayout {
                     Layout.fillWidth: true
                     Layout.preferredHeight: itemsHeight + 12
-                    Layout.topMargin: -Theme.em(1.5)
+                    Layout.topMargin: -Luk.Theme.em(1.5)
 
-                    My.Button {
+                    Luk.Button {
                         id: button
-                        Layout.preferredWidth: Theme.em(14)
+                        Layout.preferredWidth: Luk.Theme.em(14)
                         Layout.preferredHeight: itemsHeight
                         text: "Sign Up"
                         flat: true
@@ -168,13 +166,13 @@ Item {
                         id: mandatoryLabel
                         horizontalAlignment: Text.AlignHCenter
                         text: "Fields marked with *<br>are mandatory"
-                        font: Theme.smallFont
-                        color: Theme.warningColor
+                        font: Luk.Theme.smallFont
+                        color: Luk.Theme.warningColor
                         opacity: button.enabled ? 0 : 1
                         Behavior on opacity {
                             NumberAnimation {
-                                duration: Theme.animationDuration
-                                easing.type: Theme.animationEasingType
+                                duration: Luk.Theme.animationDuration
+                                easing.type: Luk.Theme.animationEasingType
                             }
                         }
                     }
@@ -187,19 +185,19 @@ Item {
 
             Item {
                 Layout.fillWidth: true
-                Layout.minimumWidth: Theme.em(2)
+                Layout.minimumWidth: Luk.Theme.em(2)
             }
         }
 
         Connections {
             target: mainWindow
             function onWidthChanged(width) {
-                gridLayout.columns = (width >= Theme.em(40)) ? 2 : 1
+                gridLayout.columns = (width >= Luk.Theme.em(40)) ? 2 : 1
             }
         }
     }
 
-    My.Switch {
+    Luk.Switch {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.margins: 10

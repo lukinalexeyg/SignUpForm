@@ -26,8 +26,6 @@ QString Core::init()
     if (!readCountriesJson())
         return QString("File \"%1\" has no valid data").arg(s_countriesFileName);
 
-    m_clipboardAdapter = new ClipboardAdapter(this);
-
     return QString();
 }
 

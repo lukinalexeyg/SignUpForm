@@ -1,7 +1,5 @@
-import QtQuick 2.12
 import QtQuick.Controls 2.12
-import "qrc:/qml/components" 1.0
-import Theme 1.0
+import LukQml 1.0
 
 ApplicationWindow {
     id: mainWindow

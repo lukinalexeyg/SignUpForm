@@ -1,5 +1,7 @@
 #include "core.h"
 
+#include <lukqmlplugin.h>
+
 #include <QApplication>
 #include <QMessageBox>
 #include <QtQml>
@@ -29,13 +31,14 @@ int main(int argc, char *argv[])
     if (!errorString.isEmpty())
         error(errorString);
 
+    LukQmlPlugin lukQmlPlugin;
+    lukQmlPlugin.registerTypes("LukQml");
+
     QQmlApplicationEngine engine;
-    QQmlContext *qmlContext = engine.rootContext();
+    QQmlContext *context = engine.rootContext();
 
-    qmlContext->setContextProperty(QStringLiteral("Core"), &core);
-    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/themes/Theme.qml")), "Theme", 1, 0, "Theme");
-
-    engine.addImportPath(QStringLiteral("qrc:/qml"));
+    context->setContextProperty(QStringLiteral("Core"), &core);
+    engine.addImportPath(QStringLiteral("qrc:/"));
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
     if (engine.rootObjects().isEmpty())
